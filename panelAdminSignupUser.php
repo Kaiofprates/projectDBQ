@@ -183,7 +183,7 @@ require 'init.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="panelAdminTest.php">
+                <a class="navbar-brand" href="panelAdmin.php">
                     <img src="res/img/logo_padrao_horizontal_resize.jpg" alt="LOGO">
                 </a>
             </div>
@@ -243,7 +243,7 @@ require 'init.php';
             <!-- Page Heading -->
             <div class="row" id="main">
                 <div class="col-sm-12 col-md-12 well" id="content">
-                    <h1>Welcomido Admin!</h1>
+                    <h4>Painel de cadastro de usuário</h4>
                     <?php include 'signupUser.php'?>
                 </div>
             </div>

@@ -6,7 +6,7 @@ require 'init.php';
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <meta charset="utf-8">
-  <title>BDQ 1.6.6</title>
+  <title>DBQ 1.6.7</title>
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="color: #fff;margin-bottom: 0px;border-bottom-width: 0px;">

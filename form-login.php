@@ -1,10 +1,8 @@
-<!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="res/js/login.js">
         <link rel="stylesheet" type="text/css" href="res/css/login.css">
         <meta charset="utf-8">
-        <title>BDQ 1.6.1</title>
+        <title>DBQ 1.6.7</title>
     </head>
     <body class="container">
         <div class="login-page">

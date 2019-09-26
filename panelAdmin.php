@@ -243,7 +243,12 @@ require 'init.php';
             <!-- Page Heading -->
             <div class="row" id="main">
                 <div class="col-sm-12 col-md-12 well" id="content">
-                    <h1>Welcomido Admin!</h1>
+                    <h3>Painel Admin</h3><br><h4>Usuário cadastrados</h4>
+                    <?php include 'logsUsers.php'; ?>
+                </div>
+                <div class="col-sm-12 col-md-12 well" id="content">
+                    <h4>Logs</h4>
+                    <?php include 'logs.php'; ?>
                 </div>
             </div>
             <!-- /.row -->

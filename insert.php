@@ -65,16 +65,25 @@
                      <tr>  
                           <td>' . $row["qQuestionText"] . '</td>
                           <td>' . $row["aAlternativesText"] . '</td>  
-                          <td>
-                            <button type="button" name="edit" value="Edit" id="'.$row["idQuestion"] .'" class="btn btn-info btn-xs edit_data" ><span class="glyphicon glyphicon-edit"></span></button>  
-                            <input type="button" name="view" value="view" id="' . $row["idQuestion"] . '" class="btn btn-info btn-xs view_data" />
-                            </td>  
+                          <td> 
+
+                          <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModalADCA"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+
+                          <button type="button" name="edit" value="Edit" id="'.$row["idQuestion"].'" class="btn btn-info btn-xs edit_data" ><span class="glyphicon glyphicon-edit"></span></button>
+ 
+                          <button type="button" name="view" value="view" id="'.$row["idQuestion"].'" class="btn btn-info btn-xs view_data"><span class="glyphicon glyphicon-list-alt"></span></button>
+
+                          <a href="delete.php?idQuestion=<?php echo '.$row["idQuestion"].' ?><button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-trash"></span></button></a>
+
+                          <span class="badge badge-pill badge-secondary"><?php '.$row["qDiscipline"].'?></span>
+                        </td>  
                      </tr>  
                 ';  
            }  
            $output .= '</table>';  
       }  
-      echo $output;  
+      echo $output;
+      $window.location.reload();
  }  
  ?>
  

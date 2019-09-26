@@ -7,7 +7,7 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 if (empty($email) || empty($password))
 {
 	include 'form-login.php';
-    echo "Informe email e senha";
+    echo "<p align='center' style='position:relative;top:-180px;'>Informe email e senha</p>";
     exit;
 }
 // cria o hash da senha
@@ -22,7 +22,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (count($users) <= 0)
 {
 	include 'form-login.php';
-    echo "Email ou senha incorretos";
+    echo "<p align='center' style='position:relative;top:-180px;'>Email ou senha incorretos</p>";
     exit;
 }
 // pega o primeiro usuário

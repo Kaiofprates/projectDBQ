@@ -1,12 +1,17 @@
 <?php
 session_start();
-require 'init.php';
+if($_SESSION['user_level'] != 1){
+
+    echo "Usuário não está logado. Direcionando para a página de login.";
+    header('Location: index.php');
+
+}
 ?>
 <html lang="ptbr">
 <head>
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
-    <title>BDQ 1.6.5 | Painel Admin</title>
+    <title>BDQ 1.6.8 | Painel Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style type="text/css">
@@ -225,11 +230,14 @@ require 'init.php';
                     </ul>
                 </li>-->
                 <li>
-                    <a href="index.php"><span class="glyphicon glyphicon-home"></span>  Banco de Questões</a>
+                    <a href="panelAdmin.php"><span class="glyphicon glyphicon-home"></span>  Painel Admin</a>
                 </li>
                 <li>
-                    <a href="panelAdminSignupUser.php"><i class="fa fa-fw fa-user-plus"></i>  Cadastar Usuário</a>
+                    <a href="index.php"><i class="fa fa-database" aria-hidden="true"></i>  Banco de Questões</a>
                 </li>
+                <li>
+                    <a href="panelAdminSignupUser.php"><i class="fa fa-fw fa-user-plus"></i>  Cadastrar Usuário</a>
+                </li> 
                 <!--<li>
                     <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
                 </li>-->
@@ -243,8 +251,8 @@ require 'init.php';
             <!-- Page Heading -->
             <div class="row" id="main">
                 <div class="col-sm-12 col-md-12 well" id="content">
-                    <h4>Painel de cadastro de usuário</h4>
-                    <?php include 'signupUser.php'?>
+                    <h4>Cadastro</h4>
+                    <?php include 'form-signupUsers.php'?>
                 </div>
             </div>
             <!-- /.row -->

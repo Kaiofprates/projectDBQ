@@ -6,5 +6,6 @@ $_SESSION['logged_in'] = false;
 // finaliza a sessão
 session_destroy();
 // retorna para a index.php
-header('Location: index.php');  
+header('Location: index.php');
+exit;  
 ?>

@@ -1,8 +1,8 @@
 <?php
-	$connect = mysqli_connect("localhost", "root", "", "db_genexam"); 
-	$sql = "SELECT * FROM tb_users";
-	mysqli_set_charset($connect,"utf8");   
-	$result = mysqli_query($connect, $sql);
+$connect = mysqli_connect("localhost", "root", "", "db_genexam"); 
+$sql = "SELECT * FROM tb_users";
+mysqli_set_charset($connect,"utf8");   
+$result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,13 +37,13 @@
 		<?php 
 		while($row = mysqli_fetch_array($result))  
 		{
-		?>
-		<tr>
-			<td><?php echo $row ["name"]; ?></td>
-			<td><?php echo $row ["email"]; ?></td>
-			<td><?php echo $row ["level"]; ?></td>
-		</tr>
-		<?php 
+			?>
+			<tr>
+				<td><?php echo $row ["name"]; ?></td>
+				<td><?php echo $row ["email"]; ?></td>
+				<td><?php echo $row ["level"]; ?></td>
+			</tr>
+			<?php 
 		} 
 		?>
 	</table>

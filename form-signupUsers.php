@@ -1,3 +1,11 @@
+<?php
+if($_SESSION['user_level'] != 1){
+
+    echo "Usuário não está logado. Direcionando para a página de login.";
+    header('Location: index.php');
+
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +41,7 @@
         .campo input[type="url"],
         .campo input[type="tel"],
         .campo input[type="password"],
+        .campo input[type="number"],
         .campo select,
         .campo textarea {
             padding: 0.2em;
@@ -76,70 +85,64 @@
             cursor: pointer;
         }
     </style>
+    <meta charset="UTF-8">
 </head>
 <body>
-        <form action="userSignup.php" method="post">
-            <fieldset>
+    <form action="userSignup.php" method="POST">
+        <fieldset>
             <fieldset class="grupo">
                 <div class="campo">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" style="width: 10em" value="">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" style="width: 10em" value="">
                 </div>
                 <div class="campo">
-                    <label for="snome">Sobrenome</label>
-                    <input type="text" id="snome" name="snome" style="width: 10em" value="">
+                    <label for="lastName">Sobrenome</label>
+                    <input type="text" id="lastName" name="lastName" style="width: 10em" value="">
                 </div>
             </fieldset>
             <div class="campo">
                 <label>Sexo</label>
                 <label>
-                    <input type="radio" name="sexo" value="masculino"> Masculino
+                    <input type="radio" name="gender" value="masculino"> Masculino
                 </label>
                 <label>
-                    <input type="radio" name="sexo" value="feminino"> Feminino
+                    <input type="radio" name="gender" value="feminino"> Feminino
                 </label>
             </div>
             <div class="campo">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" style="width: 20em" value="">
-            </div>
-            <div class="campo">
-                <label for="telefone">Telefone</label>
-                <input type="text" id="telefone" name="telefone" style="width: 10em" value="">
+                <label for="telephone">Telefone</label>
+                <input type="Tel" id="telephone" name="telephone" style="width: 10em" value="">
             </div>
 
             <fieldset class="grupo">
-                    <!--<div class="campo">
-                        <label for="cidade">Cidade</label>
-                        <input type="text" id="cidade" name="cidade" style="width: 10em" value="">
-                    </div>-->
-                    <div class="campo">
-                        <label for="estado">Nível de acesso</label>
-                        <select name="nivel" id="nivel">
-                            <option value="">--</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </div>
-                </fieldset>
-
+                <!--<div class="campo">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" style="width: 10em" value="">
+                </div>-->
                 <div class="campo">
-                    <label for="telefone">Senha</label>
-                    <input type="password" id="password" name="password" style="width: 10em" value="">
+                    <label for="level">Nível de acesso</label>
+                    <input type="number" name="level" min="1" max="2">
                 </div>
+            </fieldset>
+
+            <div class="campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" style="width: 20em" value="">
+            </div>
+
+            <div class="campo">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" style="width: 10em" value="">
+            </div>
+
 
                 <!--<div class="campo">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea rows="6" style="width: 20em" id="mensagem" name="mensagem"></textarea>
-                </div>
-
-                <div class="campo">
                     <label>Newsletter</label>
                     <label>
                         <input type="checkbox" name="newsletter" value="1"> Gostaria de receber a Newsletter da empresa
                     </label>
                 </div>-->
-                <button type="submit" name="submit" >Enviar</button>
+                <button type="submit" name="submit">Enviar</button>
             </fieldset>
         </form>
     </body>

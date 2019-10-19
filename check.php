@@ -1,7 +1,8 @@
 <?php  
 require_once 'init.php';
-if (!isLoggedIn())
+if(!isset ($_SESSION['login']) == true)
 {
-    header('Location: form-login.php');
-}
+}else
+	session_destroy();
+  header('location:index.php');
 ?>

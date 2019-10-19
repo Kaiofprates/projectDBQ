@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Set-2019 às 17:04
--- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.3.9
+-- Generation Time: Oct 07, 2019 at 12:19 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,41 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `db_genexam`
+-- Database: `db_genexam`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUsers` (IN `name` VARCHAR(50), IN `lastName` VARCHAR(50), IN `gender` VARCHAR(50), IN `telephone` INT(30), IN `email` VARCHAR(80), IN `password` VARCHAR(40), IN `level` INT(11), IN `discipline` VARCHAR(100))  BEGIN 
+	INSERT INTO `tb_users` 
+	(`name`, `email`, `password`, `level`,`discipline`) 
+	VALUES (name, email, password, level, discipline);
+	INSERT INTO `tb_persons` 
+	(`name`, `lastName`, `gender`, `telephone`) 
+	VALUES (name, lastName, gender, telephone);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `logs`
+-- Table structure for table `logs`
 --
 
 CREATE TABLE `logs` (
   `idIp` int(11) NOT NULL,
-  `ipIp` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `ipIpDate` date NOT NULL,
+  `ipIp` int(30) NOT NULL,
+  `ipIpDate` text COLLATE latin1_general_ci NOT NULL,
   `ipIpMsg` varchar(300) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_alternatives`
+-- Table structure for table `tb_alternatives`
 --
 
 CREATE TABLE `tb_alternatives` (
@@ -48,37 +63,59 @@ CREATE TABLE `tb_alternatives` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Extraindo dados da tabela `tb_alternatives`
+-- Dumping data for table `tb_alternatives`
 --
 
 INSERT INTO `tb_alternatives` (`idAlternative`, `aAlternativesText`, `aAnswerText`) VALUES
-(13, 'a) teste de adicionar alternativas.\r\nb) teste de editar alternativas.', NULL);
+(20, 'a) adicionar teste\r\nb) editar teste', NULL),
+(23, 'a) adicionar teste\r\nb) editar teste', NULL),
+(24, 'a) adicionar\r\nb) editar', NULL),
+(25, 'a) adicionar\r\nb) editar \r\n1', NULL),
+(26, 'a) adicionar\r\nb) editar\r\nc)1', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_questions`
+-- Table structure for table `tb_persons`
+--
+
+CREATE TABLE `tb_persons` (
+  `idPerson` int(11) NOT NULL,
+  `name` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `lastName` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `gender` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `telephone` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_questions`
 --
 
 CREATE TABLE `tb_questions` (
   `idQuestion` int(11) NOT NULL,
   `qQuestionText` text COLLATE latin1_general_ci NOT NULL,
-  `qLevel` text COLLATE latin1_general_ci NOT NULL,
+  `qLevel` int(11) NOT NULL,
   `qDiscipline` text COLLATE latin1_general_ci NOT NULL,
   `qSkill` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Extraindo dados da tabela `tb_questions`
+-- Dumping data for table `tb_questions`
 --
 
 INSERT INTO `tb_questions` (`idQuestion`, `qQuestionText`, `qLevel`, `qDiscipline`, `qSkill`) VALUES
-(13, 'QUESTÃO 01: teste de adicionar questão. teste de editar questão\r\n', 'Difícil', 'Matemática', 'Matemática e suas tecnologias');
+(20, 'QUESTÃO 01: adicionar. editar. teste', 0, 'História', 'Ciências Humanas e suas tecnologias'),
+(23, 'QUESTÃO 02: adicionar\r\neditar\r\nteste', 0, 'Matemática', 'Matemática e suas tecnologias'),
+(24, 'QUESTÃO 03: adicionar editar', 0, 'Geografia', 'Ciências da Natureza e suas tecnologias'),
+(25, 'QUESTÃO 04: adicionar \r\neditar 1', 0, 'Português', 'Ciências Humanas e suas tecnologias'),
+(26, 'QUESTÃO 05: adicionar editar1', 0, 'Português', 'Ciências Humanas e suas tecnologias');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_users`
+-- Table structure for table `tb_users`
 --
 
 CREATE TABLE `tb_users` (
@@ -86,80 +123,92 @@ CREATE TABLE `tb_users` (
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `level` int(11) NOT NULL
+  `level` int(11) NOT NULL,
+  `discipline` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `tb_users`
+-- Dumping data for table `tb_users`
 --
 
-INSERT INTO `tb_users` (`id`, `name`, `email`, `password`, `level`) VALUES
-(1, 'admin', 'admin@padrao.com', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 1),
-(2, 'suporte', 'suporte@padrao.com', '4ab79fdaa7205f3f3a09a75ea19fe264915a87c6', 1),
-(3, 'user', 'user@padrao.com', '60bddb16409a2baf76936619afecf778dabe68de', 2);
+INSERT INTO `tb_users` (`id`, `name`, `email`, `password`, `level`, `discipline`) VALUES
+(1, 'admin', 'admin@padrao.com', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 1, ''),
+(2, 'suporte', 'suporte@padrao.com', '4ab79fdaa7205f3f3a09a75ea19fe264915a87c6', 1, '');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `logs`
+-- Indexes for table `logs`
 --
 ALTER TABLE `logs`
   ADD PRIMARY KEY (`idIp`);
 
 --
--- Índices para tabela `tb_alternatives`
+-- Indexes for table `tb_alternatives`
 --
 ALTER TABLE `tb_alternatives`
   ADD PRIMARY KEY (`idAlternative`);
 
 --
--- Índices para tabela `tb_questions`
+-- Indexes for table `tb_persons`
+--
+ALTER TABLE `tb_persons`
+  ADD PRIMARY KEY (`idPerson`);
+
+--
+-- Indexes for table `tb_questions`
 --
 ALTER TABLE `tb_questions`
   ADD PRIMARY KEY (`idQuestion`);
 
 --
--- Índices para tabela `tb_users`
+-- Indexes for table `tb_users`
 --
 ALTER TABLE `tb_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `logs`
+-- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `idIp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=578;
+  MODIFY `idIp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tb_alternatives`
+-- AUTO_INCREMENT for table `tb_alternatives`
 --
 ALTER TABLE `tb_alternatives`
-  MODIFY `idAlternative` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idAlternative` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT de tabela `tb_questions`
+-- AUTO_INCREMENT for table `tb_persons`
+--
+ALTER TABLE `tb_persons`
+  MODIFY `idPerson` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_questions`
 --
 ALTER TABLE `tb_questions`
-  MODIFY `idQuestion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idQuestion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT de tabela `tb_users`
+-- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `tb_alternatives`
+-- Constraints for table `tb_alternatives`
 --
 ALTER TABLE `tb_alternatives`
   ADD CONSTRAINT `idquest_fk` FOREIGN KEY (`idAlternative`) REFERENCES `tb_questions` (`idQuestion`) ON DELETE CASCADE;

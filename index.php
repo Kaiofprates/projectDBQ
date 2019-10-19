@@ -6,7 +6,7 @@ require 'init.php';
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <meta charset="utf-8">
-  <title>DBQ 1.6.7</title>
+  <title>DBQ 1.6.8</title>
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="color: #fff;margin-bottom: 0px;border-bottom-width: 0px;">
@@ -38,7 +38,7 @@ require 'init.php';
                     <li><a href="panelAdmin.php"> <i class="fa fa-fw fa-cog"></i> Painel</a></li>
                   <?php } ?>
                     <?php if($_SESSION['user_level'] == 2){ ?>
-                        <button><a href="panelUser.php">Painel</a></button>
+                        <li><a href="panelUser.php"> <i class="fa fa-fw fa-cog"></i> Painel</a></li>
                     <?php } ?> </a>
                     <li class="divider"></li>
                     <li><a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Sair</a></li>
@@ -68,7 +68,7 @@ require 'init.php';
            <h4 class="modal-title">Login</h4>  
          </div>  
          <div class="modal-body" align="center">
-          <form action="login.php" method="post">
+          <form action="login.php" method="POST">
             <br>
             <input type="text" name="email" id="email" placeholder="Email">
             <br><br>

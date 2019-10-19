@@ -3,8 +3,8 @@
  $query = "SELECT * FROM tbl_employee ORDER BY id DESC";  
  $result = mysqli_query($connect, $query);*/
 
-$connect = mysqli_connect("localhost", "root", "", "db_genexam");  
- $query = "SELECT a.aAlternativesText,a.idAlternative,q.qQuestionText,q.qDiscipline,q.idQuestion
+ $connect = mysqli_connect("localhost", "root", "", "db_genexam");  
+ $query = "SELECT a.aAlternativesText,a.idAlternative,q.qQuestionText,q.qDiscipline,q.idQuestion,q.qSegment,q.qGrade
           FROM tb_questions AS q
           LEFT JOIN tb_alternatives AS a
           ON q.idQuestion = a.idAlternative
@@ -30,7 +30,7 @@ $connect = mysqli_connect("localhost", "root", "", "db_genexam");
                                <tr>  
                                     <th width="70%">Questões</th>  
                                     <th width="15%">Alternativas</th>
-                                    <th width="15%">Disciplina</th>  
+                                    <th width="15%">Informações</th>  
                                     <!--<th width="15%">Opções</th>-->  
                                </tr>  
                                <?php  
@@ -42,9 +42,16 @@ $connect = mysqli_connect("localhost", "root", "", "db_genexam");
                                     <td><?php echo $row["qQuestionText"]; ?></td> 
                                     <td><?php echo $row["aAlternativesText"]; ?></td>
                                     <td>
-                                      <!--insignia do tipo de disciplina adicionada-->
-                                      <span class="badge badge-píll badge-secondary"><?php echo $row["qDiscipline"]; ?>
-                                    </span>
+                                      <!--informações da questão-->
+                                      <span class="badge badge-pill badge-secondary">
+                                        <?php echo $row["qGrade"]; ?>
+                                      </span>
+                                      <span class="badge badge-pill badge-secondary">
+                                        <?php echo $row["qSegment"]; ?>
+                                      </span>
+                                      <span class="badge badge-pill badge-secondary">
+                                        <?php echo $row["qDiscipline"]; ?>
+                                      </span>
                                   </td>   
                                </tr>  
                                <?php  

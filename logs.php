@@ -24,7 +24,7 @@
 			td,th { display: block }
 		}
 	</style> 
-	<title>DBQ 1.6.7</title>
+	<title>DBQ 1.6.9</title>
 </head>
 <body>
 	<table>
@@ -39,8 +39,8 @@
 		{
 		?>
 		<tr>
-			<td><?php echo $row["ipIp"]; ?></td>
-			<td><?php echo $_SESSION['user_name']; ?></td>
+			<td><?php echo $row ["ipIp"]; ?></td>
+			<td><?php echo $row ['ipUserName']; ?></td>
 			<td><?php echo $row ["ipIpMsg"]; ?></td>
 			<td><?php echo $row ["ipIpDate"]; ?></td>
 		</tr>
